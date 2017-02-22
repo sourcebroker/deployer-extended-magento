@@ -1,6 +1,6 @@
 <?php
 
-namespace SourceBroker\DeployerExtendedMagneto\Drivers;
+namespace SourceBroker\DeployerExtendedMagento\Drivers;
 
 
 /**

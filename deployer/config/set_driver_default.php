@@ -2,7 +2,7 @@
 
 namespace Deployer;
 
-use SourceBroker\DeployerExtendedMagneto\Drivers\MagentoDriver;
+use SourceBroker\DeployerExtendedMagento\Drivers\MagentoDriver;
 
 add('shared_files', ['{{web_path}}app/etc/local.xml']);
 
