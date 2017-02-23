@@ -9,13 +9,13 @@ task('deploy', [
     'deploy:shared',
     'deploy:writable',
     'deploy:vendors',
-    'deploy:clean',
-    'deploy:lock:overwrite_entry_point',
-    'deploy:lock:create_lock_files',
+    'deploy:clear_paths',
+    'lock:overwrite_entry_point',
+    'lock:create_lock_files',
     'magento:cache:clear',
     'deploy:symlink',
     'deployer:download',
-    'deploy:lock:delete_lock_files',
+    'lock:delete_lock_files',
     'cleanup',
 ])->desc('Deploy your project');
 
