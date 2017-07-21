@@ -53,17 +53,20 @@ set('db_default', [
 ]);
 
 // Look https://github.com/sourcebroker/deployer-extended-database for docs
-// TODO: change to closure after fix of deployer bug
-set('default_stage', (new \SourceBroker\DeployerExtendedMagento\Drivers\MagentoDriver)->getInstanceName());
+set('default_stage', function(){
+    return (new \SourceBroker\DeployerExtendedMagento\Drivers\MagentoDriver)->getInstanceName();
+});
 
+// Look https://github.com/sourcebroker/deployer-extended-database for docs
 set('db_instance', function () {
     return (new \SourceBroker\DeployerExtendedMagento\Drivers\MagentoDriver)->getInstanceName();
 });
 
+// Look https://github.com/sourcebroker/deployer-extended-database for docs
 set('db_databases', function () {
     return [
         'database_default' => [
-            get('db_defaults'),
+            get('db_default'),
             [
                 'post_sql_in_markers' => '
                   UPDATE core_config_data set value="{{firstDomainWithSchemeAndEndingSlash}}" WHERE path="web/unsecure/base_url";
