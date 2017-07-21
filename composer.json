@@ -17,15 +17,11 @@
     }
   ],
   "require": {
-    "php": ">=5.4",
-    "sourcebroker/deployer-extended": "~1.0"
+    "sourcebroker/deployer-extended": "~6.0"
   },
   "autoload": {
     "psr-4": {
       "SourceBroker\\DeployerExtendedMagento\\": "src/"
-    },
-    "files": [
-      "src/Autoload.php"
-    ]
+    }
   }
 }

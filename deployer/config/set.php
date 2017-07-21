@@ -2,9 +2,6 @@
 
 namespace Deployer;
 
-set('bin/typo3cms', './vendor/bin/typo3cms');
-
-
 set('writable_use_sudo', false);
 
 set('shared_dirs', ['{{web_path}}var', '{{web_path}}media']);
@@ -22,7 +19,6 @@ set('media',
         ]
     ]);
 
-set('clear_use_sudo', false);
 set('clear_paths', [
     '.git',
     '.gitignore',
@@ -35,7 +31,6 @@ set('clear_paths', [
     '{{web_path}}LICENSE.txt',
     '{{web_path}}LICENSE_AFL.txt',
     '{{web_path}}RELEASE_NOTES.txt',
-    '{{web_path}}_scripts',
 ]);
 
 set('db_default', [
@@ -48,4 +43,26 @@ set('db_default', [
     'post_sql_in' => ''
 ]);
 
-set('clear_use_sudo', false);
+// Look https://github.com/sourcebroker/deployer-extended-database for docs
+// TODO: change to closure after fix of deployer bug
+set('default_stage', (new \SourceBroker\DeployerExtendedMagento\Drivers\MagentoDriver)->getInstanceName());
+
+set('db_instance', function () {
+    return (new \SourceBroker\DeployerExtendedMagento\Drivers\MagentoDriver)->getInstanceName();
+});
+
+set('db_databases', function () {
+    return [
+        'database_default' => [
+            get('db_defaults'),
+            [
+                'post_sql_in_markers' => '
+                  UPDATE core_config_data set value="{{firstDomainWithSchemeAndEndingSlash}}" WHERE path="web/unsecure/base_url";
+                  UPDATE core_config_data set value="{{firstDomainWithSchemeAndEndingSlash}}" WHERE path="web/secure/base_url";',
+            ],
+            function () {
+                return (new \SourceBroker\DeployerExtendedMagento\Drivers\MagentoDriver)->getDatabaseConfig();
+            },
+        ]
+    ];
+});
