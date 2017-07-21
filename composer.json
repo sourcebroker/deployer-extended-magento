@@ -19,7 +19,7 @@
   "require": {
     "sourcebroker/deployer-extended": "^6.0.0",
     "sourcebroker/deployer-extended-media": "^2.0.0",
-    "sourcebroker/deployer-extended-database": "^2.0.0"
+    "sourcebroker/deployer-extended-database": "^3.0.0"
   },
   "autoload": {
     "psr-4": {
