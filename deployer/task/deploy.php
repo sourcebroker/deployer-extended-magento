@@ -61,3 +61,5 @@ task('deploy', [
     // Standard deployer cleanup.
     'cleanup',
 ])->desc('Deploy your Magento');
+
+after('deploy', 'success');

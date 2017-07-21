@@ -10,15 +10,6 @@ set('shared_files', ['{{web_path}}app/etc/local.xml']);
 
 set('writable_dirs', ['{{web_path}}var', '{{web_path}}media']);
 
-set('media',
-    [
-        'filter' => [
-            '+ /{{web_path}}media/',
-            '+ /{{web_path}}media/**',
-            '- {{web_path}}*'
-        ]
-    ]);
-
 set('clear_paths', [
     '.git',
     '.gitignore',
@@ -32,6 +23,24 @@ set('clear_paths', [
     '{{web_path}}LICENSE_AFL.txt',
     '{{web_path}}RELEASE_NOTES.txt',
 ]);
+
+// Look on https://github.com/sourcebroker/deployer-extended#buffer-start for docs
+set('buffer_config', [
+        'index.php' => [
+            'entrypoint_filename' => 'index.php',
+        ],
+    ]
+);
+
+// Look https://github.com/sourcebroker/deployer-extended-media for docs
+set('media',
+    [
+        'filter' => [
+            '+ /{{web_path}}media/',
+            '+ /{{web_path}}media/**',
+            '- {{web_path}}*'
+        ]
+    ]);
 
 set('db_default', [
     'ignore_tables_out' => [
