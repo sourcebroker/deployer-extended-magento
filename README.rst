@@ -91,7 +91,10 @@ Mind the declaration of server('local', 'localhost'); Its needed for database ta
 and path to store database dumps.
 
 
+Changelog
+---------
 
+See https://github.com/sourcebroker/deployer-extended-magento/blob/master/CHANGELOG.rst
 
 
 .. _sourcebroker/deployer-extended: https://github.com/sourcebroker/deployer-extended
