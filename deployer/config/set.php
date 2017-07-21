@@ -44,7 +44,7 @@ set('media',
 
 set('db_default', [
     'ignore_tables_out' => [
-        'log_*',
+        'log_.*',
     ],
     'ignore_tables_in' => [],
     'post_sql_out' => '',

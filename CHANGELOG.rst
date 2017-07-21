@@ -2,6 +2,11 @@
 Changelog
 ---------
 
+3.0.1
+~~~~~
+
+a) Fix wrong ignore log_* tables
+
 3.0.0
 ~~~~~
 
