@@ -44,8 +44,7 @@ set('media',
 
 set('db_default', [
     'ignore_tables_out' => [
-//        'customer_entity',
-//        'customer_entity_varchar'
+        'log_*',
     ],
     'ignore_tables_in' => [],
     'post_sql_out' => '',
