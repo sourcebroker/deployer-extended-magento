@@ -2,6 +2,11 @@
 Changelog
 ---------
 
+3.0.0
+~~~~~
+
+a) Ignore log_* tables as default on database pull/copy
+
 2.0.0
 ~~~~~
 
