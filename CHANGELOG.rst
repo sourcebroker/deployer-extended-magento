@@ -2,6 +2,11 @@
 Changelog
 ---------
 
+4.0.0
+~~~~~
+
+a) [TASK][BREAKING] Increase the sourcebroker/deployer-extended-database version to 4.0.0
+
 3.0.1
 ~~~~~
 
