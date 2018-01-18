@@ -80,6 +80,7 @@ set('db_databases', function () {
                   UPDATE core_config_data set value="{{firstDomainWithSchemeAndEndingSlash}}" WHERE path="web/secure/base_url";',
             ],
             (new \SourceBroker\DeployerExtendedMagento\Drivers\MagentoDriver)->getDatabaseConfig(get('web_path', null)),
+            get('db_database_default_context', [])
         ]
     ];
 });

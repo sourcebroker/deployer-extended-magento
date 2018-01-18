@@ -14,6 +14,7 @@ f) [TASK] Update dependent packages. Add deployer-loader package.
 g) [FEATURE] Add db:backup task to do backup of database before each deploy.
 h) [TASK] Cleanup for db_default default values.
 i) [TASK] [!!!BREAKING] Remove 'db_default'. Move settings to 'default_database' config.
+j) [FEATURE] Add 'db_default_database_context' in 'database_default' for easily way to extend database settings.
 
 4.0.1
 ~~~~~
