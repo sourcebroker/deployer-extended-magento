@@ -45,9 +45,11 @@ set('buffer_config', [
 set('media',
     [
         'filter' => [
+            '+ /{{web_path}}',
             '+ /{{web_path}}media/',
             '+ /{{web_path}}media/**',
-            '- {{web_path}}*'
+            '- {{web_path}}*',
+            '- *'
         ]
     ]);
 
