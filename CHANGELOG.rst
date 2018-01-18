@@ -11,6 +11,7 @@ c) [TASK] Remove 'web_path' from 'clear_paths' for composer.json / composer.lock
 d) [TASK] [!!!BREAKING] Change the way getInstanceName parameters works. Param means now path relative to root of project.
 e) [TASK] [!!!BREAKING] Change the way getDatabaseConfig parameters works. Param means now path relative to root of project.
 f) [TASK] Update dependent packages. Add deployer-loader package.
+g) [FEATURE] Add db:backup task to do backup of database before each deploy.
 
 4.0.1
 ~~~~~

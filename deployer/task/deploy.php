@@ -37,6 +37,10 @@ task('deploy', [
     // Read more on https://github.com/sourcebroker/deployer-extended#php-clear-cache-cli
     'php:clear_cache_cli',
 
+    // Create database backup, compress and copy to database store.
+    // Read more on https://github.com/sourcebroker/deployer-extended-database#db-backup
+    'db:backup',
+
     // Start buffering http requests. No frontend access possible from now.
     // Read more on https://github.com/sourcebroker/deployer-extended#buffer-start
     'buffer:start',

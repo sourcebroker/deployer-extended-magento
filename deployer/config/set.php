@@ -60,6 +60,12 @@ set('db_default', [
     'post_sql_in' => ''
 ]);
 
+// Look https://github.com/sourcebroker/deployer-extended-database#db-dumpclean for docs
+set('db_dumpclean_keep', [
+    '*' => 5,
+    'live' => 10,
+]);
+
 // Look https://github.com/sourcebroker/deployer-extended-database for docs
 set('default_stage', function () {
     return (new \SourceBroker\DeployerExtendedMagento\Drivers\MagentoDriver)->getInstanceName(get('web_path', null));
