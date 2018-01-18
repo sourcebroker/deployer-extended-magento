@@ -25,7 +25,7 @@ set('clear_paths', [
     '.gitattributes',
     'composer.json',
     'composer.lock',
-    '{{web_path}}composer.phar',
+    'composer.phar',
     '{{web_path}}.env.dist',
     '{{web_path}}LICENSE.html',
     '{{web_path}}LICENSE.txt',

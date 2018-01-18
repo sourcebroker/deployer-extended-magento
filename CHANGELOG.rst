@@ -16,6 +16,7 @@ h) [TASK] Cleanup for db_default default values.
 i) [TASK] [!!!BREAKING] Remove 'db_default'. Move settings to 'default_database' config.
 j) [FEATURE] Add 'db_default_database_context' in 'database_default' for easily way to extend database settings.
 k) [BUGFIX] Fix filter for rsync downloads.
+l) [TASK] Remove 'web_path' from 'clear_paths' for composer.phar
 
 4.0.1
 ~~~~~
