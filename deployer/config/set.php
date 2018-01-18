@@ -51,12 +51,6 @@ set('media',
         ]
     ]);
 
-set('db_default', [
-    'ignore_tables_out' => [
-        'log_.*',
-    ],
-]);
-
 // Look https://github.com/sourcebroker/deployer-extended-database#db-dumpclean for docs
 set('db_dumpclean_keep', [
     '*' => 5,
@@ -77,15 +71,15 @@ set('db_instance', function () {
 set('db_databases', function () {
     return [
         'database_default' => [
-            get('db_default'),
             [
+                'ignore_tables_out' => [
+                    'log_.*',
+                ],
                 'post_sql_in_markers' => '
                   UPDATE core_config_data set value="{{firstDomainWithSchemeAndEndingSlash}}" WHERE path="web/unsecure/base_url";
                   UPDATE core_config_data set value="{{firstDomainWithSchemeAndEndingSlash}}" WHERE path="web/secure/base_url";',
             ],
-            function () {
-                return (new \SourceBroker\DeployerExtendedMagento\Drivers\MagentoDriver)->getDatabaseConfig(get('web_path', null));
-            },
+            (new \SourceBroker\DeployerExtendedMagento\Drivers\MagentoDriver)->getDatabaseConfig(get('web_path', null)),
         ]
     ];
 });
