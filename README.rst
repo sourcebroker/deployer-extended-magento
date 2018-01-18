@@ -32,6 +32,10 @@ Installation
 
       composer require sourcebroker/deployer-extended-magento
 
+   Note! This command will install also deployer/dist package which will create ./vendor/bin/dep binary. You should use
+   this binary to run deploy. Its advisable that you put `alias dep="php ./vendor/bin/dep"` in your ~/.profile
+   to be able to run deployer with regular "dep" command.
+
 2) If you are using deployer as composer package then just put following line in your deploy.php:
    ::
 
@@ -40,20 +44,8 @@ Installation
 3) If you are using deployer as phar then put following lines in your deploy.php:
    ::
 
-      require __DIR__ . '/vendor/autoload.php';
+      require_once(__DIR__ . '/vendor/sourcebroker/deployer-loader/autoload.php');
       new \SourceBroker\DeployerExtendedMagento\Loader();
-
-   | IMPORTANT NOTE!
-   | Because there is inclusion of '/vendor/autoload.php' inside deployer realm then sometimes there can be conflict
-     of deployer dependencies with you project dependencies. Quite often its about symfony/console version or
-     monolog/monolog version because they are most common between projects. In that case use deployer installed as
-     composer package and resolve the dependency problems on composer level. Example of error when you run "dep" command
-     and there are dependencies problems:
-
-     ::
-
-      Fatal error: Declaration of Symfony\Component\Console\Input\ArrayInput::hasParameterOption() must be compatible with Symfony\Component\Console\Input\InputInterface::hasParameterOption($values, $onlyParams = false) in /.../vendor/symfony/symfony/src/Symfony/Component/Console/Input/ArrayInput.php on line 190
-
 
 4) Remove task "deploy" from your deploy.php. Otherwise you will overwrite deploy task defined in
    deployer/deploy/task/deploy.php
@@ -65,7 +57,8 @@ Installation
 
     namespace Deployer;
 
-    new \SourceBroker\DeployerExtendedMagento2\Loader();
+    require_once(__DIR__ . '/vendor/sourcebroker/deployer-loader/autoload.php');
+    new \SourceBroker\DeployerExtendedMagento\Loader();
 
     set('repository', 'git@my-git:my-project.git');
 
