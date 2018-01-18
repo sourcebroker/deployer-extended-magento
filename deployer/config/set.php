@@ -2,20 +2,29 @@
 
 namespace Deployer;
 
-set('writable_use_sudo', false);
+set('web_path', '');
 
-set('shared_dirs', ['{{web_path}}var', '{{web_path}}media']);
+set('shared_dirs', [
+    '{{web_path}}var',
+    '{{web_path}}media'
+]);
 
-set('shared_files', ['{{web_path}}app/etc/local.xml']);
+set('writable_dirs', [
+        '{{web_path}}var',
+        '{{web_path}}media'
+    ]
+);
 
-set('writable_dirs', ['{{web_path}}var', '{{web_path}}media']);
+set('shared_files', [
+    '{{web_path}}app/etc/local.xml'
+]);
 
 set('clear_paths', [
     '.git',
     '.gitignore',
     '.gitattributes',
-    '{{web_path}}composer.json',
-    '{{web_path}}composer.lock',
+    'composer.json',
+    'composer.lock',
     '{{web_path}}composer.phar',
     '{{web_path}}.env.dist',
     '{{web_path}}LICENSE.html',
@@ -52,13 +61,13 @@ set('db_default', [
 ]);
 
 // Look https://github.com/sourcebroker/deployer-extended-database for docs
-set('default_stage', function(){
-    return (new \SourceBroker\DeployerExtendedMagento\Drivers\MagentoDriver)->getInstanceName();
+set('default_stage', function () {
+    return (new \SourceBroker\DeployerExtendedMagento\Drivers\MagentoDriver)->getInstanceName(get('web_path', null));
 });
 
 // Look https://github.com/sourcebroker/deployer-extended-database for docs
 set('db_instance', function () {
-    return (new \SourceBroker\DeployerExtendedMagento\Drivers\MagentoDriver)->getInstanceName();
+    return (new \SourceBroker\DeployerExtendedMagento\Drivers\MagentoDriver)->getInstanceName(get('web_path', null));
 });
 
 // Look https://github.com/sourcebroker/deployer-extended-database for docs
@@ -72,7 +81,7 @@ set('db_databases', function () {
                   UPDATE core_config_data set value="{{firstDomainWithSchemeAndEndingSlash}}" WHERE path="web/secure/base_url";',
             ],
             function () {
-                return (new \SourceBroker\DeployerExtendedMagento\Drivers\MagentoDriver)->getDatabaseConfig();
+                return (new \SourceBroker\DeployerExtendedMagento\Drivers\MagentoDriver)->getDatabaseConfig(get('web_path', null));
             },
         ]
     ];

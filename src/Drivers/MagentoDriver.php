@@ -10,15 +10,18 @@ namespace SourceBroker\DeployerExtendedMagento\Drivers;
 class MagentoDriver
 {
     /**
-     * @param null $absolutePathWithConfig
+     * @param string $webroot
      * @return array
      * @throws \Exception
      */
-    public function getDatabaseConfig($absolutePathWithConfig = null)
+    public function getDatabaseConfig($webroot = '')
     {
-        if (null === $absolutePathWithConfig) {
-            $absolutePathWithConfig = getcwd() . '/app/etc/local.xml';
+        $pathParts = [];
+        $pathParts[] = getcwd();
+        if (!empty($webroot)) {
+            $pathParts[] = trim($webroot, DIRECTORY_SEPARATOR);
         }
+        $absolutePathWithConfig = implode('/', $pathParts) . '/app/etc/local.xml';
         if (file_exists($absolutePathWithConfig)) {
             $xml = simplexml_load_file($absolutePathWithConfig);
             $dbSettings['user'] = $xml->global[0]->resources[0]->default_setup[0]->connection[0]->username[0]->__toString();
@@ -35,15 +38,18 @@ class MagentoDriver
     }
 
     /**
-     * @param null $absolutePathWithConfig
+     * @param string $webroot
      * @return string
      * @throws \Exception
      */
-    public function getInstanceName($absolutePathWithConfig = null)
+    public function getInstanceName($webroot = '')
     {
-        if (null === $absolutePathWithConfig) {
-            $absolutePathWithConfig = getcwd() . '/app/etc/local.xml';
+        $pathParts = [];
+        $pathParts[] = getcwd();
+        if (!empty($webroot)) {
+            $pathParts[] = trim($webroot, DIRECTORY_SEPARATOR);
         }
+        $absolutePathWithConfig = implode('/', $pathParts) . '/app/etc/local.xml';
         if (file_exists($absolutePathWithConfig)) {
             $xml = simplexml_load_file($absolutePathWithConfig);
             if ($xml->instance) {
