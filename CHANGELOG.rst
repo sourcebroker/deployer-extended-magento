@@ -12,6 +12,7 @@ d) [TASK] [!!!BREAKING] Change the way getInstanceName parameters works. Param m
 e) [TASK] [!!!BREAKING] Change the way getDatabaseConfig parameters works. Param means now path relative to root of project.
 f) [TASK] Update dependent packages. Add deployer-loader package.
 g) [FEATURE] Add db:backup task to do backup of database before each deploy.
+h) [TASK] Cleanup for db_default default values.
 
 4.0.1
 ~~~~~

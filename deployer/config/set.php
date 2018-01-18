@@ -55,9 +55,6 @@ set('db_default', [
     'ignore_tables_out' => [
         'log_.*',
     ],
-    'ignore_tables_in' => [],
-    'post_sql_out' => '',
-    'post_sql_in' => ''
 ]);
 
 // Look https://github.com/sourcebroker/deployer-extended-database#db-dumpclean for docs
