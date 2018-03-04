@@ -50,7 +50,7 @@ Installation
 4) Remove task "deploy" from your deploy.php. Otherwise you will overwrite deploy task defined in
    deployer/deploy/task/deploy.php
 
-5) Example deploy.php file for composer based deployer:
+5) Example deploy.php file for phar based deployer:
    ::
 
     <?php
